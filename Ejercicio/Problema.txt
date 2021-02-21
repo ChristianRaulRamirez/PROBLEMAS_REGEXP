@@ -1,0 +1,44 @@
+Problema propuesto : 
+---------------------
+Un comercio que vende artículos de computación registra los datos de sus artículos en una tabla con 
+ese nombre.
+
+1- Elimine "articulos", si existe:
+ drop table if exists articulos;
+
+2- Cree la tabla, con la siguiente estructura:
+create table articulos(
+  codigo int unsigned auto_increment,
+  nombre varchar(25) not null,
+  descripcion varchar(30),
+  precio decimal(6,2) unsigned,
+  cantidad tinyint unsigned,
+  primary key(codigo)
+ );
+
+3- Ingrese algunos registros:
+ insert into articulos (nombre, descripcion, precio,cantidad)
+  values ('impresora','Epson Stylus C45',400.80,20);
+ insert into articulos (nombre, descripcion, precio,cantidad)
+  values ('impresora','Epson Stylus C85',500,30);
+ insert into articulos (nombre, descripcion, precio,cantidad)
+  values ('monitor','Samsung 14',800,10);
+ insert into articulos (nombre, descripcion, precio,cantidad)
+  values ('teclado','ingles Biswal',100,50);
+ insert into articulos (nombre, descripcion, precio,cantidad)
+  values ('teclado','español Biswal',90,50);
+ insert into articulos (nombre, descripcion, precio,cantidad)
+  values ('impresora multifuncion','HP 1410',300,20);
+
+4- Seleccione todos los artículos que comienzan con "impresora":
+ select * from articulos
+  where nombre regexp '^impresora';
+
+5-Busque los artículos en los cuales el campo "descripcion" no tienen "H" ni "W":
+ select * from articulos
+  where descripcion not regexp '[hw]';
+
+6- Seleccione las descripciones que contengan una letra "s" seguida de un caracter cualquiera y 
+luego una "n":
+ select * from articulos
+  where descripcion regexp 's.n';
